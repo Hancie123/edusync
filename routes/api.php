@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\InstitutionController;
+use App\Http\Controllers\Api\StudentClassController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,3 +18,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('login',[AuthController::class,'login']);
+
+
+Route::group(['middleware'=>'auth:api'],function(){
+
+    Route::get('institution/{id}',[InstitutionController::class,'show']);
+
+    Route::apiResource('student-class',StudentClassController::class);
+    
+});
