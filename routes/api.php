@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\InstitutionController;
 use App\Http\Controllers\Api\StudentClassController;
+use App\Http\Controllers\Api\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,7 @@ Route::group(['middleware'=>'auth:api'],function(){
     Route::get('institution/{id}',[InstitutionController::class,'show']);
 
     Route::apiResource('student-class',StudentClassController::class);
+
+    Route::apiResource('students',StudentController::class);
     
 });
