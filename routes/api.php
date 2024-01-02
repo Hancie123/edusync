@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('login',[AuthController::class,'login']);
 
 Route::get('announcements',[AnnouncementController::class,'index']);
+Route::get('today-announcements', [AnnouncementController::class, 'todayAnnouncement']);
 
 
 Route::group(['middleware'=>'auth:api'],function(){
@@ -34,5 +35,7 @@ Route::group(['middleware'=>'auth:api'],function(){
     Route::apiResource('students',StudentController::class);
 
     Route::apiResource('announcement',AnnouncementController::class);
+
+    Route::get('today-announcement', [AnnouncementController::class, 'todayAnnouncement']);
     
 });
