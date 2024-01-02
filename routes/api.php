@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AnnouncementController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\InstitutionController;
 use App\Http\Controllers\Api\StudentClassController;
@@ -21,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login',[AuthController::class,'login']);
 
+Route::get('announcements',[AnnouncementController::class,'index']);
+
 
 Route::group(['middleware'=>'auth:api'],function(){
 
@@ -30,6 +33,6 @@ Route::group(['middleware'=>'auth:api'],function(){
 
     Route::apiResource('students',StudentController::class);
 
-    Route::apiResource('announcement',Announcement::class);
+    Route::apiResource('announcement',AnnouncementController::class);
     
 });
